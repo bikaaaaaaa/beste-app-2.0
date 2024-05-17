@@ -1,6 +1,6 @@
 ﻿BASIS   \   **EXPLORE**   \   CREATE   \   EVALUATE   \   FRAME 
 
-Projekt: *Health Quest*
+Projekt: *Bio Pathways*
 
 **EXPLORE METHODE 5.2:** PERSONA
 
@@ -8,44 +8,52 @@ ZEICHNE DEINE PERSONA !
 
 *Mein nächster Urlaub*
 
-- Italien
+- Deutschland, Bonn
 
 *Meine Lieblings-Apps*
 
-- Youtube / TikTok
-- Brawl Stars
+- Youtube 
+- Pinterest
+- Whatsapp
+- Studyflix/Studysmarter 
 
 *Das ist ein Tick von mir Das ist mein Problem* 
 
-- Zu viel Bildschirnzeit (Gaming) 
+- Alles auf dem letzen Moment verschieben
+- schnell aufgeben wenn man etwas nicht versteht 
 
 *Ein typischer Tag*
 
-- früh aufstehen
-- Arbeit/Schule (Lehre)
-- Gamen
-- Familien nerven
+- früh aufstehen/frühstücken
+- auf dem Weg zu Uni
+- Vorlesungen/Übungen
+- Tanz Lektion besuchen (von der Uni)
+- Zuhause: Notitzen von Vorlesung sortieren, evtl. lernen
 - Freunde treffen
-- (manchmal) Fitness
+- mit der Familie essen 
+- Zeit für sich: Handy, TV, Youtube, Häkeln, ...
+- 22-23 Uhr ins Bett gehen 
 
 
 BESCHREIBUNG DER PERSON
 *Haarfarbe, Grösse, Alter etc.*
 
-- Grösse: 1.71 m
-- Alter: 16
+- Grösse: 1.59 m
+- Alter: 20
 - Haarfarbe: schwarz
 - Augenfarbe: braun
 
 *Das sind meine Ziele*
 
-- Sportlich / Gesund sein
 - Schule & Life balance
+- effektives lernen, so dass es noch im Kopf bleibt
+- Prokrastination verhindern
+- frustfrei lernen 
 
 *Das ist mein Problem*
 
-- Gewohnheiten entwickeln
-- Konsistent bleiben
-- Motivation 
+- viel prokrastinieren
+- motiviert bleiben
+  
 
 
