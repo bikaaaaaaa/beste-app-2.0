@@ -21,7 +21,7 @@ Was war gut?
 
 Was war schlecht?
 
-\- mehr farbe um leute so wie anzulocken
+\- braucht mehr farbe um leute so wie anzulocken
 
 \- Tab Biochemische Prozess so dann programmieren das man nicht nur ein Bild vom bsp: Citratzyklus sieht, sondern das man es versteht und lernt. 
 
