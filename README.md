@@ -1,7 +1,7 @@
 # beste-app-2.0
 Team: Anastasia Zhyhalova, Leyla Öçal, Theebikaa Ravintharan
 
-App Name: BioPathways
+App Name: BioChem Pathways
 
 
 **Beschreibung:**
