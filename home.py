@@ -2,43 +2,6 @@ import streamlit as st
 import random
 from datetime import datetime
 
-# Definiere die verschiedenen Seiten
-def show_home():
-    st.title("Willkommen zu BioChem Pathways!")
-    col1, col2, col3, col4 = st.columns(4)
-
-    with col1:
-        if st.button("Pathways", key='pathways_button'):
-            st.session_state.page = 'Pathways'
-
-    with col2:
-        if st.button("Eselsbrücken", key='eselsbrücken_button'):
-            st.session_state.page = 'Eselsbrücken'
-
-    with col3:
-        if st.button("Memes", key='memes_button'):
-            st.session_state.page = 'Memes'
-
-    with col4:
-        if st.button("Quiz", key='quiz_button'):
-            st.session_state.page = 'Quiz'
-
-def show_pathways():
-    st.title("Pathways")
-    st.write("Hier sind die Inhalte zu Pathways.")
-
-def show_eselsbrücken():
-    st.title("Eselsbrücken")
-    st.write("Hier sind die Inhalte zu Eselsbrücken.")
-
-def show_memes():
-    st.title("Memes")
-    st.write("Hier sind die Inhalte zu Memes.")
-
-def show_quiz():
-    st.title("Quiz")
-    st.write("Hier sind die Inhalte zu Quiz.")
-
 # Liste der motivierenden Zitate
 quotes = [
     "Your chemistry teacher WILL find you and lecture you, if you still dont know how H2O is loaded.",
@@ -68,7 +31,7 @@ quotes = [
 def get_daily_quote():
     return random.choice(quotes)
 
-# Hauptfunktion zur Steuerung des Seitenwechsels und Anzeige des Zitats
+# Hauptfunktion zur Steuerung des Seitenwechsels
 def main():
     if 'page' not in st.session_state:
         st.session_state.page = 'Home'
@@ -77,13 +40,13 @@ def main():
     if st.session_state.page == 'Home':
         show_home()
     elif st.session_state.page == 'Pathways':
-        show_pathways()
+        st.switch_page('pages/pathways.py')
     elif st.session_state.page == 'Eselsbrücken':
-        show_eselsbrücken()
+        st.switch_page('pages/eselsbrücken.py')
     elif st.session_state.page == 'Memes':
-        show_memes()
+        st.switch_page('pages/memes.py')
     elif st.session_state.page == 'Quiz':
-        show_quiz()
+        st.switch_page('pages/quiz.py')
 
     # Anzeige des Zitats des Tages
     quote = get_daily_quote()
@@ -92,6 +55,27 @@ def main():
             <h2 style="text-align: center; color: #00796b; font-family: 'Arial', sans-serif;">{quote}</h2>
         </div>
     """, unsafe_allow_html=True)
+
+# Funktion zur Anzeige der Home-Seite
+def show_home():
+    st.title("Willkommen zu BioChem Pathways!")
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+        if st.button("Pathways", key='pathways_button'):
+            st.session_state.page = 'Pathways'
+
+    with col2:
+        if st.button("Eselsbrücken", key='eselsbrücken_button'):
+            st.session_state.page = 'Eselsbrücken'
+
+    with col3:
+        if st.button("Memes", key='memes_button'):
+            st.session_state.page = 'Memes'
+
+    with col4:
+        if st.button("Quiz", key='quiz_button'):
+            st.session_state.page = 'Quiz'
 
 if __name__ == "__main__":
     main()
