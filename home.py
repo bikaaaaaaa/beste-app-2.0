@@ -1,6 +1,5 @@
 import streamlit as st
 import random
-from datetime import datetime
 
 # Seitenkonfiguration
 st.set_page_config(
@@ -67,16 +66,6 @@ def show_home():
     st.title("Willkommen zu BioChem Pathways!")
     col1, col2, col3, col4 = st.columns(4)
 
-    # Debugging: Anzeige der aktuellen Seite
-    st.write("Aktuelle Seite: Home")
-
-    # Debugging: Überprüfung der Bildpfade
-    st.write("Überprüfung der Bildpfade:")
-    st.write("Pathways: images/pathways.jpeg")
-    st.write("Eselsbrücken: images/eselsbrücke.jpeg")
-    st.write("Memes: images/memes.jpeg")
-    st.write("Quiz: images/quiz.jpeg")
-
     with col1:
         if st.button("Pathways"):
             st.session_state.page = 'Pathways'
@@ -96,7 +85,7 @@ def show_home():
         if st.button("Quiz"):
             st.session_state.page = 'Quiz'
         st.image("images/quiz.jpeg", caption="Quiz")
-        
+
     # Zitat des Tages, zentriert und gestaltet
     quote = get_daily_quote()
     st.markdown(f"""
@@ -125,7 +114,7 @@ def show_quiz():
 def main():
     if 'page' not in st.session_state:
         st.session_state.page = 'Home'
-    
+
     if st.session_state.page == 'Home':
         show_home()
     elif st.session_state.page == 'Pathways':
@@ -136,12 +125,7 @@ def main():
         show_memes()
     elif st.session_state.page == 'Quiz':
         show_quiz()
-    else:
-        st.error("Seite nicht gefunden")
-
-    # Überprüfen Sie, ob die Seite gewechselt werden soll, und erzwingen Sie ein Neuladen
-    if st.button('Erzwingen Sie die Seite neu laden'):
-        st.experimental_rerun()
 
 if __name__ == "__main__":
     main()
+
