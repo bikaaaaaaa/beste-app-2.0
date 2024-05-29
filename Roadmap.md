@@ -1,7 +1,7 @@
 ***Roadmap***
 
 1. **Projektstruktur aufbauen**:
-   - Einrichtung eines Hauptverzeichnisses für das Projekt, z. B. "BioPathways".
+   - Einrichtung eines Hauptverzeichnisses für das Projekt, z. B. "BioChemPathways".
    - Erstellung von Unterordnern für Bilder und Seiten, wie "images" und "pages".
 
 2. **Seitenerstellung**:
