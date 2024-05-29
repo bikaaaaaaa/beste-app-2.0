@@ -30,8 +30,8 @@ def main():
     selected_pathway = st.sidebar.selectbox("Wähle einen Pfad aus:", list(pathways.keys()))
 
     if selected_pathway == "Citratzyklus":
-        st.image("images/soon.jpg")
-        st.markdown("<h1 style='text-align: center; color: #336699;'>Coming soon</h1>", unsafe_allow_html=True)
+        st.image("images/soon.jpg", use_column_width=True)
+        st.markdown("<h1 style='text-align: center; font-family: Arial, sans-serif; font-size: 36px;'>Coming soon</h1>", unsafe_allow_html=True)
     if selected_pathway == "Atmungskette":
         st.image(pathways[selected_pathway]["main_image"], caption=selected_pathway, use_column_width=True, width=1000)
 
