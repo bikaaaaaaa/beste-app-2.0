@@ -10,57 +10,35 @@ st.set_page_config(
     initial_sidebar_state="expanded",  # Standardzustand der Seitenleiste
 )
 
-def main():
+# Definition der Farben
+class Theme:
+    primaryColor = "#05f1c9"
+    backgroundColor = "#c8e3e8"
+    secondaryBackgroundColor = "#82bad2"
+    textColor = "#0f1212"
 
-    # Definition der Farben
-    class Theme:
-        primaryColor = "#05f1c9"
-        backgroundColor = "#c8e3e8"
-        secondaryBackgroundColor = "#82bad2"
-        textColor = "#0f1212"
+theme = Theme()
 
-    theme = Theme()
+# Anwendung des Themes
+st.markdown(
+    f"""
+    <style>
+    .reportview-container.main.block-container {{
+        color: {theme.primaryColor};
+        background-color: {theme.backgroundColor};
+        font-family: Arial, sans-serif;
+    }}
+    .reportview-container.main {{
+        color: {theme.primaryColor};
+        background-color: {theme.backgroundColor};
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
-    # Anwendung des Themes
-    st.markdown(
-        f"""
-        <style>
-        .reportview-container.main.block-container {{
-            color: {theme.primaryColor};
-            background-color: {theme.backgroundColor};
-            font-family: Arial, sans-serif;
-        }}
-        .reportview-container.main {{
-            color: {theme.primaryColor};
-            background-color: {theme.backgroundColor};
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
-    if 'page' not in st.session_state:
-        st.session_state.page = 'Home'
-
-    # Anzeige der entsprechenden Seite
-    if st.session_state.page == 'Home':
-        show_home()
-    elif st.session_state.page == 'Pathways':
-        show_pathways()
-    elif st.session_state.page == 'Eselsbrücken':
-        show_eselsbrücken()
-    elif st.session_state.page == 'Memes':
-        show_memes()
-    elif st.session_state.page == 'Quiz':
-        show_quiz()
-
-    # Zitat des Tages, zentriert und gestaltet
-    quote = get_daily_quote()
-    st.markdown(f"""
-        <div style="background-color: #e0f7fa; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px;">
-            <h2 style="text-align: center; color: #00796b; font-family: 'Arial', sans-serif;">{quote}</h2>
-        </div>
-    """, unsafe_allow_html=True)
+if 'page' not in st.session_state:
+    st.session_state.page = 'Home'
 
 # Funktionen zur Anzeige der verschiedenen Seiten
 def show_home():
@@ -69,22 +47,22 @@ def show_home():
 
     with col1:
         if st.button("Pathways", key='pathways_button'):
-            st.switch_page('pages/pathways.py')
+            st.session_state.page = 'Pathways'
         st.image("images/pathways.jpeg", caption="Pathways")
 
     with col2:
         if st.button("Eselsbrücken", key='eselsbrücken_button'):
-            st.switch_page('pages/eselsbrücken.py')
+            st.session_state.page = 'Eselsbrücken'
         st.image("images/eselsbrücke.jpeg", caption="Eselsbrücken")
 
     with col3:
         if st.button("Memes", key='memes_button'):
-            st.switch_page('pages/memes.py')
+            st.session_state.page = 'Memes'
         st.image("images/memes.jpeg", caption="Memes")
 
     with col4:
         if st.button("Quiz", key='quiz_button'):
-            st.switch_page('pages/quiz.py')
+            st.session_state.page = 'Quiz'
         st.image("images/quiz.jpeg", caption="Quiz")
 
 def show_pathways():
@@ -132,9 +110,8 @@ quotes = [
 def get_daily_quote():
     return random.choice(quotes)
 
-if __name__ == "__main__":
-    main()
-schreib diesen Teil ausserhalb der mein function: # Anzeige der entsprechenden Seite
+def main():
+    # Anzeige der entsprechenden Seite
     if st.session_state.page == 'Home':
         show_home()
     elif st.session_state.page == 'Pathways':
@@ -145,3 +122,15 @@ schreib diesen Teil ausserhalb der mein function: # Anzeige der entsprechenden S
         show_memes()
     elif st.session_state.page == 'Quiz':
         show_quiz()
+
+    # Zitat des Tages, zentriert und gestaltet
+    quote = get_daily_quote()
+    st.markdown(f"""
+        <div style="background-color: #e0f7fa; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px;">
+            <h2 style="text-align: center; color: #00796b; font-family: 'Arial', sans-serif;">{quote}</h2>
+        </div>
+    """, unsafe_allow_html=True)
+
+if __name__ == "__main__":
+    main()
+
