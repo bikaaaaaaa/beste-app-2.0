@@ -1,32 +1,9 @@
 import streamlit as st
 import random
 from datetime import datetime
+import toml
 
-# CSS-Stile für Hintergrund und Textfarbe
-page_bg = """
-<style>
-.stApp {
-    background-color: #392981;  # Hintergrundfarbe
-    color: white;  # Textfarbe
-}
-div[data-testid="stText"] {
-    color: white;  # Textfarbe
-}
-div[data-testid="stMarkdownContainer"] p {
-    color: white;  # Textfarbe
-}
-h1, h2, h3, h4, h5, h6 {
-    color: white;  # Überschriftenfarbe
-}
-.stButton > button {
-    color: white !important;  # Textfarbe für Schaltflächen
-    background-color: black !important;  # Hintergrundfarbe für Schaltflächen
-}
-</style>
-"""
-
-# Anwendung der Stile
-st.markdown(page_bg, unsafe_allow_html=True)
+theme_config = toml.load("config.toml")
 
 # Seitenkonfiguration
 st.set_page_config(
