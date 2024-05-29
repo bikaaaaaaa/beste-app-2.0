@@ -134,5 +134,3 @@ def get_daily_quote():
 
 if __name__ == "__main__":
     main()
-
-
