@@ -2,6 +2,14 @@ import streamlit as st
 import random
 from datetime import datetime
 
+# Seitenkonfiguration
+st.set_page_config(
+    page_title="BioPathways",
+    page_icon=":dna:",  # Symbol, falls benötigt
+    layout="centered",  # Ausrichtung des Inhalts
+    initial_sidebar_state="expanded",  # Standardzustand der Seitenleiste
+)
+
 # Liste der motivierenden Zitate
 quotes = [
     "Your chemistry teacher WILL find you and lecture you, if you still dont know how H2O is loaded.",
@@ -31,12 +39,6 @@ quotes = [
 def get_daily_quote():
     return random.choice(quotes)
 
-# Funktion zur Anzeige des Zurück-Buttons
-def show_back_button():
-    if st.session_state.page != 'Home':
-        if st.button("Zurück", key='back_button'):
-            st.session_state.page = 'Home'
-
 # Hauptfunktion zur Steuerung des Seitenwechsels
 def main():
     if 'page' not in st.session_state:
@@ -54,14 +56,13 @@ def main():
     elif st.session_state.page == 'Quiz':
         st.switch_page('pages/quiz.py')
 
-    # Anzeige des Zitats des Tages und des Zurück-Buttons
+    # Anzeige des Datums und des Zitats des Tages
     quote = get_daily_quote()
     st.markdown(f"""
-        <div style="background-color: #e0f7fa; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px;">
-            <h2 style="text-align: center; color: #00796b; font-family: 'Arial', sans-serif;">{quote}</h2>
-        </div>
+        <hr>
+        <p style="text-align: center;">{datetime.now().strftime("%Y-%m-%d %H:%M:%S")}</p>
+        <p style="text-align: center;">{quote}</p>
     """, unsafe_allow_html=True)
-    show_back_button()
 
 # Funktion zur Anzeige der Home-Seite
 def show_home():
@@ -86,3 +87,4 @@ def show_home():
 
 if __name__ == "__main__":
     main()
+
