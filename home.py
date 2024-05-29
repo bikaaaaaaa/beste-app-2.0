@@ -78,14 +78,14 @@ def show_home():
         st.image("images/memes.jpeg", caption="Memes")
 
     with col3:
-        if st.button("Eselsbrücken", key='eselsbrücken_button'):
-            st.switch_page('pages/eselsbrücken.py')
-        st.image("images/eselsbrücke.jpeg", caption="Eselsbrücken")
-
-    with col4:
         if st.button("Quiz", key='quiz_button'):
             st.switch_page('pages/quiz.py')
         st.image("images/quiz.jpeg", caption="Quiz")
+
+    with col4:
+        if st.button("Eselsbrücken", key='eselsbrücken_button'):
+            st.switch_page('pages/eselsbrücken.py')
+        st.image("images/eselsbrücke.jpeg", caption="Eselsbrücken")
 
 def show_pathways():
     st.title("Pathways")
