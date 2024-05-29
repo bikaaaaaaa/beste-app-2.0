@@ -116,6 +116,20 @@ def main():
     if 'page' not in st.session_state:
         st.session_state.page = 'Home'
     
+    st.sidebar.title("Navigation")
+    if st.sidebar.button("Home"):
+        st.session_state.page = 'Home'
+    if st.sidebar.button("Pathways"):
+        st.session_state.page = 'Pathways'
+    if st.sidebar.button("Eselsbrücken"):
+        st.session_state.page = 'Eselsbrücken'
+    if st.sidebar.button("Memes"):
+        st.session_state.page = 'Memes'
+    if st.sidebar.button("Quiz"):
+        st.session_state.page = 'Quiz'
+    
+    st.sidebar.write(f"Aktuelle Seite: {st.session_state.page}")
+
     if st.session_state.page == 'Home':
         show_home()
     elif st.session_state.page == 'Pathways':
