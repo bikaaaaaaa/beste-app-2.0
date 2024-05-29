@@ -9,34 +9,6 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Liste der Seiten
-pages = {
-    "Home": show_home,
-    "Pathways": show_pathways,
-    "Eselsbrücken": show_eselsbrücken,
-    "Memes": show_memes,
-    "Quiz": show_quiz,
-}
-
-# Hauptfunktion
-def main():
-    # Anzeige der Seitenleiste für die Navigation
-    page = st.sidebar.radio("Navigation", list(pages.keys()))
-
-    # Anzeige der ausgewählten Seite
-    pages[page]()
-
-    # Zitat des Tages
-    quote = get_daily_quote()
-    st.markdown(
-        f"""
-        <div style="background-color: #e0f7fa; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px;">
-            <h2 style="text-align: center; color: #00796b; font-family: 'Arial', sans-serif;">{quote}</h2>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
-
 # Funktionen zur Anzeige der verschiedenen Seiten
 def show_home():
     st.title("Willkommen zu BioChem Pathways!")
@@ -78,6 +50,34 @@ def show_quiz():
     st.title("Quiz")
     st.write("Hier sind die Inhalte zu Quiz.")
 
+# Liste der Seiten
+pages = {
+    "Home": show_home,
+    "Pathways": show_pathways,
+    "Eselsbrücken": show_eselsbrücken,
+    "Memes": show_memes,
+    "Quiz": show_quiz,
+}
+
+# Hauptfunktion
+def main():
+    # Anzeige der Seitenleiste für die Navigation
+    page = st.sidebar.radio("Navigation", list(pages.keys()))
+
+    # Anzeige der ausgewählten Seite
+    pages[page]()
+
+    # Zitat des Tages
+    quote = get_daily_quote()
+    st.markdown(
+        f"""
+        <div style="background-color: #e0f7fa; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px;">
+            <h2 style="text-align: center; color: #00796b; font-family: 'Arial', sans-serif;">{quote}</h2>
+        </div>
+    """,
+        unsafe_allow_html=True,
+    )
+
 # Liste der motivierenden Zitate
 quotes = [
     "Your chemistry teacher WILL find you and lecture you, if you still dont know how H2O is loaded.",
@@ -109,6 +109,3 @@ def get_daily_quote():
 
 if __name__ == "__main__":
     main()
-
-
-
