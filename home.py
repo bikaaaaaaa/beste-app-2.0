@@ -129,8 +129,11 @@ def main():
     else:
         st.error("Seite nicht gefunden")
 
-    # Aktualisierung der Seite erzwingen
-    st.experimental_rerun()
+    # Überprüfen Sie, ob die Seite gewechselt werden soll, und erzwingen Sie ein Neuladen
+    if 'rerun' in st.session_state and st.session_state.rerun:
+        st.session_state.rerun = False
+        st.experimental_rerun()
 
 if __name__ == "__main__":
     main()
+
