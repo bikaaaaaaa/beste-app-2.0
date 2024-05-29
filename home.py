@@ -28,6 +28,7 @@ st.markdown(
 quotes = [
     "Your chemistry teacher WILL find you and lecture you, if you still dont know how H2O is loaded.",
     "Drink water, your organs are failing!",
+    "I 🐝 🍃 in you!!",
     # Weitere Zitate hier ...
 ]
 
