@@ -1,6 +1,5 @@
 import streamlit as st
 import random
-from datetime import datetime
 
 # Seitenkonfiguration
 st.set_page_config(
@@ -115,7 +114,10 @@ def show_quiz():
 def main():
     if 'page' not in st.session_state:
         st.session_state.page = 'Home'
-    
+
+    st.write(f"Current page: {st.session_state.page}")
+
+    # Display the correct page based on the session state
     if st.session_state.page == 'Home':
         show_home()
     elif st.session_state.page == 'Pathways':
