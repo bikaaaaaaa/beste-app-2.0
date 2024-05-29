@@ -20,17 +20,24 @@ def main():
             }
         },
         "Citratzyklus": {
-            st.titel: ("Coming soon")
+            "main_image": None,
+            "stages": {
+                1: ("Coming soon", None)
+            }
         }
     }
 
     selected_pathway = st.sidebar.selectbox("Wähle einen Pfad aus:", list(pathways.keys()))
 
-    st.image(pathways[selected_pathway]["main_image"], caption=selected_pathway, use_column_width=True, width=1000)
+    if selected_pathway == "Citratzyklus":
+        st.title("Citratzyklus")
+        st.write("Coming soon")
+    else:
+        st.image(pathways[selected_pathway]["main_image"], caption=selected_pathway, use_column_width=True, width=1000)
 
-    current_stage_index = st.empty()
-    stage_description = st.empty()
-    stage_image = st.empty()
+        current_stage_index = st.empty()
+        stage_description = st.empty()
+        stage_image = st.empty()
 
     if "current_stage" not in st.session_state:
         st.session_state.current_stage = 1
