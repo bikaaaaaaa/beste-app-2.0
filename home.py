@@ -3,18 +3,18 @@ import random
 
 def main():
     st.title("BioPathways")
-
-    page = st.sidebar.selectbox("Select a page", ["Home", "Pathways", "Eselsbrücken", "Memes", "Quiz"])
-
-    if page == "Home":
+    if 'page' not in st.session_state:
+        st.session_state.page = 'Home'
+     # Anzeige der entsprechenden Seite
+    if st.session_state.page == 'Home':
         show_home()
-    elif page == "Pathways":
+    elif st.session_state.page == 'Pathways':
         show_pathways()
-    elif page == "Eselsbrücken":
+    elif st.session_state.page == 'Eselsbrücken':
         show_eselsbrücken()
-    elif page == "Memes":
+    elif st.session_state.page == 'Memes':
         show_memes()
-    elif page == "Quiz":
+    elif st.session_state.page == 'Quiz':
         show_quiz()
 
 def show_home():
