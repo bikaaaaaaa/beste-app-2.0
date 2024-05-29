@@ -84,4 +84,14 @@ quotes = [
     "Be kind to ya mind",
     "Don‘t let idiots ruin your day",
     "Don‘t be ashamed of who you are. That’s your parents' job",
-    "Don’t be a whiny
+    "Don’t be a whiny little shit",
+    "Logic will get you from A to B. Imagination will take you everywhere – Albert Einstein",
+]
+
+# Abrufen eines zufälligen Zitats, das für einen Tag zwischengespeichert wird
+@st.cache(ttl=86400)
+def get_daily_quote():
+    return random.choice(quotes)
+
+if __name__ == "__main__":
+    main()
