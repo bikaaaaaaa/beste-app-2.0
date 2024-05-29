@@ -83,9 +83,9 @@ def show_home():
         st.image("images/quiz.jpeg", caption="Quiz")
 
     with col4:
-        if st.button("Eselsbrücken", key='eselsbrücken_button'):
-            st.switch_page('pages/eselsbrücken.py')
-        st.image("images/eselsbrücke.jpeg", caption="Eselsbrücken")
+        if st.button("Eselsbruecken", key='eselsbruecken_button'):
+            st.switch_page('pages/eselsbruecken.py')
+        st.image("images/eselsbruecke.jpeg", caption="Eselsbruecken")
 
 def show_pathways():
     st.title("Pathways")
