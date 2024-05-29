@@ -1,6 +1,6 @@
 ﻿BASIS   \   **EXPLORE**   \   CREATE   \   EVALUATE   \   FRAME 
 
-Projekt: *Bio Pathways*
+Projekt: *BioChem Pathways*
 
 **EXPLORE METHODE 5.2:** PERSONA
 
