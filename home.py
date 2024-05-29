@@ -1,9 +1,6 @@
 import streamlit as st
 import random
 from datetime import datetime
-import toml
-
-theme_config = toml.load("config.toml")
 
 # Seitenkonfiguration
 st.set_page_config(
