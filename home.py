@@ -42,18 +42,6 @@ def main():
     if 'page' not in st.session_state:
         st.session_state.page = 'Home'
 
-    # Anzeige der entsprechenden Seite
-    if st.session_state.page == 'Home':
-        show_home()
-    elif st.session_state.page == 'Pathways':
-        show_pathways()
-    elif st.session_state.page == 'Eselsbrücken':
-        show_eselsbrücken()
-    elif st.session_state.page == 'Memes':
-        show_memes()
-    elif st.session_state.page == 'Quiz':
-        show_quiz()
-
     # Zitat des Tages, zentriert und gestaltet
     quote = get_daily_quote()
     st.markdown(f"""
