@@ -30,5 +30,3 @@
 8. **Deployment**:
    - Veröffentlichung der App, um sie für Benutzer zugänglich zu machen.
    - Nutzung von Plattformen wie Streamlit Sharing oder Heroku für das Deployment und die Bereitstellung der App für ein breiteres Publikum.
-
-Diese Roadmap bietet eine klare Struktur für die Entwicklung der BioPathways-App, beginnend mit der Projektstruktur bis hin zur Bereitstellung für Benutzer.
