@@ -2,17 +2,17 @@ import streamlit as st
 import random
 from datetime import datetime
 
-# Установка темы
+# Seitenkonfiguration
 st.set_page_config(
     page_title="BioPathways",
-    page_icon=":dna:",  # Иконка, если нужна
-    layout="centered",  # Выравнивание содержимого
-    initial_sidebar_state="expanded",  # Состояние боковой панели по умолчанию
+    page_icon=":dna:",  # Symbol, falls benötigt
+    layout="centered",  # Ausrichtung des Inhalts
+    initial_sidebar_state="expanded",  # Standardzustand der Seitenleiste
 )
 
 def main():
 
-    # Определение цветов
+    # Definition der Farben
     class Theme:
         primaryColor = "#05f1c9"
         backgroundColor = "#c8e3e8"
@@ -21,7 +21,7 @@ def main():
 
     theme = Theme()
 
-    # Применение темы
+    # Anwendung des Themes
     st.markdown(
         f"""
         <style>
@@ -54,7 +54,7 @@ def main():
     elif st.session_state.page == 'Quiz':
         show_quiz()
 
-    # Центрированное и оформленное в светло-голубых оттенках цитата
+    # Zitat des Tages, zentriert und gestaltet
     quote = get_daily_quote()
     st.markdown(f"""
         <div style="background-color: #e0f7fa; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px;">
@@ -62,77 +62,72 @@ def main():
         </div>
     """, unsafe_allow_html=True)
 
-# Funktion zur Anzeige der Home-Seite
+# Funktionen zur Anzeige der verschiedenen Seiten
 def show_home():
     st.title("Willkommen zu BioChem Pathways!")
- 
     col1, col2, col3, col4 = st.columns(4)
- 
+
     with col1:
         if st.button("Pathways", key='pathways_button'):
             st.switch_page('pages/pathways.py')
         st.image("images/pathways.jpeg", caption="Pathways")
- 
+
     with col2:
         if st.button("Eselsbrücken", key='eselsbrücken_button'):
             st.switch_page('pages/eselsbrücken.py')
         st.image("images/eselsbrücke.jpeg", caption="Eselsbrücken")
- 
+
     with col3:
         if st.button("Memes", key='memes_button'):
             st.switch_page('pages/memes.py')
         st.image("images/memes.jpeg", caption="Memes")
- 
+
     with col4:
         if st.button("Quiz", key='quiz_button'):
             st.switch_page('pages/quiz.py')
         st.image("images/quiz.jpeg", caption="Quiz")
- 
-# Funktion zur Anzeige der Pathways-Seite
+
 def show_pathways():
     st.title("Pathways")
     st.write("Hier sind die Inhalte zu Pathways.")
- 
-# Funktion zur Anzeige der Eselsbrücken-Seite
+
 def show_eselsbrücken():
     st.title("Eselsbrücken")
     st.write("Hier sind die Inhalte zu Eselsbrücken.")
- 
-# Funktion zur Anzeige der Memes-Seite
+
 def show_memes():
     st.title("Memes")
     st.write("Hier sind die Inhalte zu Memes.")
- 
-# Funktion zur Anzeige der Quiz-Seite
+
 def show_quiz():
     st.title("Quiz")
     st.write("Hier sind die Inhalte zu Quiz.")
- 
-# List of motivational quotes
-quotes = [
-       "Your chemistry teacher WILL find you and lecture you, if you still dont know how H2O is loaded.",
-       "Drink water, your organs are failing!",
-       "I 🐝 🍃 in you!!",
-       "JUST DO IT!",
-       "🦄",
-       "Never back down never what? – never give up – NEVER BACK DOWN NEVER WHAT? – Never give up!!",
-       "„Do or do not. There is no try.“ – Yoda",
-       "Never gonna give you up 🕺 Never gonna let you down 💃 Never gonna run around and desert you 🕺Never gonna make you cry 💃 Never gonna say goodbye 🕺Never gonna tell a lie and hurt you 💃",
-       "„It is not our abilities that show what we truly are … it is our choices.“ – Dumbledore",
-       "“Just keep swimming. Just keep swimming. Just keep swimming, swimming, swimming. What do we do? We swim, swim.” – Dory",
-       "You dropped this 👑",
-       "In this world you either crank that soulja boy or it cranks you",
-       "Sorry i’m too thicc to do anything half-assed",
-       "Do literally whatever makes you happy",
-       "You know what it takes to make a star shine? A shitload of fucking darkness",
-       "Be kind to ya mind",
-       "Don‘t let idiots ruin your day",
-       "Don‘t be ashamed of who you are. That’s your parents' job",
-       "Don’t be a whiny little shit",
-       "Logic will get you from A to B. Imagination will take you everywhere – Albert Einstein"
-   ]
 
-# Получение случайной цитаты, закешированной на день
+# Liste der motivierenden Zitate
+quotes = [
+    "Your chemistry teacher WILL find you and lecture you, if you still dont know how H2O is loaded.",
+    "Drink water, your organs are failing!",
+    "I 🐝 🍃 in you!!",
+    "JUST DO IT!",
+    "🦄",
+    "Never back down never what? – never give up – NEVER BACK DOWN NEVER WHAT? – Never give up!!",
+    "„Do or do not. There is no try.“ – Yoda",
+    "Never gonna give you up 🕺 Never gonna let you down 💃 Never gonna run around and desert you 🕺Never gonna make you cry 💃 Never gonna say goodbye 🕺Never gonna tell a lie and hurt you 💃",
+    "„It is not our abilities that show what we truly are … it is our choices.“ – Dumbledore",
+    "“Just keep swimming. Just keep swimming. Just keep swimming, swimming, swimming. What do we do? We swim, swim.” – Dory",
+    "You dropped this 👑",
+    "In this world you either crank that soulja boy or it cranks you",
+    "Sorry i’m too thicc to do anything half-assed",
+    "Do literally whatever makes you happy",
+    "You know what it takes to make a star shine? A shitload of fucking darkness",
+    "Be kind to ya mind",
+    "Don‘t let idiots ruin your day",
+    "Don‘t be ashamed of who you are. That’s your parents' job",
+    "Don’t be a whiny little shit",
+    "Logic will get you from A to B. Imagination will take you everywhere – Albert Einstein"
+]
+
+# Abrufen eines zufälligen Zitats, das für einen Tag zwischengespeichert wird
 @st.cache_data(ttl=86400)
 def get_daily_quote():
     return random.choice(quotes)
