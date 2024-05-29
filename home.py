@@ -5,6 +5,24 @@ import toml
 
 theme_config = toml.load("config.toml")
 
+# Применение темы
+st.markdown(
+    f"""
+    <style>
+    .reportview-container.main.block-container {{
+        color: {theme_config['textColor']};
+        background-color: {theme_config['backgroundColor']};
+        font-family: Arial, sans-serif;
+    }}
+    .reportview-container.main {{
+        color: {theme_config['textColor']};
+        background-color: {theme_config['backgroundColor']};
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Seitenkonfiguration
 st.set_page_config(
     page_title="BioPathways",
@@ -14,34 +32,6 @@ st.set_page_config(
 )
 
 def main():
-    
-    # Definition der Farben
-    class Theme:
-        primaryColor = "#05f1c9"
-        backgroundColor = "#c8e3e8"
-        secondaryBackgroundColor = "#82bad2"
-        textColor = "#0f1212"
-
-    theme = Theme()
-    
-    # Anwendung des Themes
-    st.markdown(
-        f"""
-        <style>
-        .reportview-container.main.block-container {{
-            color: {theme_config['textColor']};
-            background-color: {theme_config['backgroundColor']};
-            font-family: Arial, sans-serif;
-        }}
-        .reportview-container.main {{
-            color: {theme_config['textColor']};
-            background-color: {theme_config['backgroundColor']};
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
-
 
     if 'page' not in st.session_state:
         st.session_state.page = 'Home'
