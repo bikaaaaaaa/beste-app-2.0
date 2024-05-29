@@ -9,6 +9,29 @@ st.set_page_config(
     initial_sidebar_state="expanded",  # Standardzustand der Seitenleiste
 )
 
+# Definition der Farben
+class Theme:
+    primaryColor = "#05f1c9"
+    backgroundColor = "#c8e3e8"
+    secondaryBackgroundColor = "#82bad2"
+    textColor = "#0f1212"
+
+theme = Theme()
+
+# Anwendung des Themes
+st.markdown(
+    f"""
+    <style>
+    .reportview-container {{
+        color: {theme.textColor};
+        background-color: {theme.backgroundColor};
+        font-family: Arial, sans-serif;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
+
 # Liste der motivierenden Zitate
 quotes = [
     "Your chemistry teacher WILL find you and lecture you, if you still dont know how H2O is loaded.",
@@ -38,36 +61,31 @@ quotes = [
 def get_daily_quote():
     return random.choice(quotes)
 
-# Funktion zur Anzeige der Startseite
+# Funktionen zur Anzeige der verschiedenen Seiten
 def show_home():
     st.title("Willkommen zu BioChem Pathways!")
-    
-    # Anzeige der Debugging-Nachricht
-    st.write("Überprüfung der Bildpfade:")
-    st.image("images/pathways.jpeg", caption="Pathways")
-    st.image("images/eselsbrücke.jpeg", caption="Eselsbrücken")
-    st.image("images/memes.jpeg", caption="Memes")
-    st.image("images/quiz.jpeg", caption="Quiz")
-    
-    # Anzeige der Buttons
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
         if st.button("Pathways"):
             st.session_state.page = 'Pathways'
+        st.image("images/pathways.jpeg", caption="Pathways")
 
     with col2:
         if st.button("Eselsbrücken"):
             st.session_state.page = 'Eselsbrücken'
+        st.image("images/eselsbrücke.jpeg", caption="Eselsbrücken")
 
     with col3:
         if st.button("Memes"):
             st.session_state.page = 'Memes'
+        st.image("images/memes.jpeg", caption="Memes")
 
     with col4:
         if st.button("Quiz"):
             st.session_state.page = 'Quiz'
-
+        st.image("images/quiz.jpeg", caption="Quiz")
+        
     # Zitat des Tages, zentriert und gestaltet
     quote = get_daily_quote()
     st.markdown(f"""
@@ -76,7 +94,6 @@ def show_home():
         </div>
     """, unsafe_allow_html=True)
 
-# Funktionen zur Anzeige der anderen Seiten
 def show_pathways():
     st.title("Pathways")
     st.write("Hier sind die Inhalte zu Pathways.")
@@ -97,7 +114,7 @@ def show_quiz():
 def main():
     if 'page' not in st.session_state:
         st.session_state.page = 'Home'
-
+    
     if st.session_state.page == 'Home':
         show_home()
     elif st.session_state.page == 'Pathways':
