@@ -1,44 +1,41 @@
 import streamlit as st
 import random
-from datetime import datetime
 
 # Seitenkonfiguration
 st.set_page_config(
-    page_title="BioPathways",
-    page_icon=":dna:",  # Symbol, falls benötigt
-    layout="centered",  # Ausrichtung des Inhalts
-    initial_sidebar_state="expanded",  # Standardzustand der Seitenleiste
+    page_title="BioChem Pathways",
+    page_icon=":dna:",
+    layout="wide",  # Änderung des Layouts für mehr Platz
+    initial_sidebar_state="expanded",
 )
 
-# Definition der Farben
-class Theme:
-    primaryColor = "#05f1c9"
-    backgroundColor = "#c8e3e8"
-    secondaryBackgroundColor = "#82bad2"
-    textColor = "#0f1212"
+# Liste der Seiten
+pages = {
+    "Home": show_home,
+    "Pathways": show_pathways,
+    "Eselsbrücken": show_eselsbrücken,
+    "Memes": show_memes,
+    "Quiz": show_quiz,
+}
 
-theme = Theme()
+# Hauptfunktion
+def main():
+    # Anzeige der Seitenleiste für die Navigation
+    page = st.sidebar.radio("Navigation", list(pages.keys()))
 
-# Anwendung des Themes
-st.markdown(
-    f"""
-    <style>
-    .reportview-container.main.block-container {{
-        color: {theme.primaryColor};
-        background-color: {theme.backgroundColor};
-        font-family: Arial, sans-serif;
-    }}
-    .reportview-container.main {{
-        color: {theme.primaryColor};
-        background-color: {theme.backgroundColor};
-    }}
-    </style>
+    # Anzeige der ausgewählten Seite
+    pages[page]()
+
+    # Zitat des Tages
+    quote = get_daily_quote()
+    st.markdown(
+        f"""
+        <div style="background-color: #e0f7fa; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px;">
+            <h2 style="text-align: center; color: #00796b; font-family: 'Arial', sans-serif;">{quote}</h2>
+        </div>
     """,
-    unsafe_allow_html=True,
-)
-
-if 'page' not in st.session_state:
-    st.session_state.page = 'Home'
+        unsafe_allow_html=True,
+    )
 
 # Funktionen zur Anzeige der verschiedenen Seiten
 def show_home():
@@ -46,24 +43,24 @@ def show_home():
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
-        if st.button("Pathways", key='pathways_button'):
-            st.session_state.page = 'Pathways'
         st.image("images/pathways.jpeg", caption="Pathways")
+        if st.button("Pathways"):
+            show_pathways()
 
     with col2:
-        if st.button("Eselsbrücken", key='eselsbrücken_button'):
-            st.session_state.page = 'Eselsbrücken'
         st.image("images/eselsbrücke.jpeg", caption="Eselsbrücken")
+        if st.button("Eselsbrücken"):
+            show_eselsbrücken()
 
     with col3:
-        if st.button("Memes", key='memes_button'):
-            st.session_state.page = 'Memes'
         st.image("images/memes.jpeg", caption="Memes")
+        if st.button("Memes"):
+            show_memes()
 
     with col4:
-        if st.button("Quiz", key='quiz_button'):
-            st.session_state.page = 'Quiz'
         st.image("images/quiz.jpeg", caption="Quiz")
+        if st.button("Quiz"):
+            show_quiz()
 
 def show_pathways():
     st.title("Pathways")
@@ -102,34 +99,13 @@ quotes = [
     "Don‘t let idiots ruin your day",
     "Don‘t be ashamed of who you are. That’s your parents' job",
     "Don’t be a whiny little shit",
-    "Logic will get you from A to B. Imagination will take you everywhere – Albert Einstein"
+    "Logic will get you from A to B. Imagination will take you everywhere – Albert Einstein",
 ]
 
 # Abrufen eines zufälligen Zitats, das für einen Tag zwischengespeichert wird
-@st.cache_data(ttl=86400)
+@st.cache(ttl=86400)
 def get_daily_quote():
     return random.choice(quotes)
-
-def main():
-    # Anzeige der entsprechenden Seite
-    if st.session_state.page == 'Home':
-        show_home()
-    elif st.session_state.page == 'Pathways':
-        show_pathways()
-    elif st.session_state.page == 'Eselsbrücken':
-        show_eselsbrücken()
-    elif st.session_state.page == 'Memes':
-        show_memes()
-    elif st.session_state.page == 'Quiz':
-        show_quiz()
-
-    # Zitat des Tages, zentriert und gestaltet
-    quote = get_daily_quote()
-    st.markdown(f"""
-        <div style="background-color: #e0f7fa; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px;">
-            <h2 style="text-align: center; color: #00796b; font-family: 'Arial', sans-serif;">{quote}</h2>
-        </div>
-    """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
