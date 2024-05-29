@@ -1,11 +1,12 @@
 import streamlit as st
 import random
+from datetime import datetime
 
 # Seitenkonfiguration
 st.set_page_config(
     page_title="BioPathways",
     page_icon=":dna:",  # Symbol, falls benötigt
-    layout="wide",  # Ausrichtung des Inhalts
+    layout="centered",  # Ausrichtung des Inhalts
     initial_sidebar_state="expanded",  # Standardzustand der Seitenleiste
 )
 
@@ -61,29 +62,29 @@ quotes = [
 def get_daily_quote():
     return random.choice(quotes)
 
-# Funktion zur Anzeige der Startseite
+# Funktionen zur Anzeige der verschiedenen Seiten
 def show_home():
     st.title("Willkommen zu BioChem Pathways!")
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
         if st.button("Pathways"):
-            st.experimental_set_query_params(page="Pathways")
+            st.session_state.page = 'Pathways'
         st.image("images/pathways.jpeg", caption="Pathways")
 
     with col2:
         if st.button("Eselsbrücken"):
-            st.experimental_set_query_params(page="Eselsbrücken")
+            st.session_state.page = 'Eselsbrücken'
         st.image("images/eselsbrücke.jpeg", caption="Eselsbrücken")
 
     with col3:
         if st.button("Memes"):
-            st.experimental_set_query_params(page="Memes")
+            st.session_state.page = 'Memes'
         st.image("images/memes.jpeg", caption="Memes")
 
     with col4:
         if st.button("Quiz"):
-            st.experimental_set_query_params(page="Quiz")
+            st.session_state.page = 'Quiz'
         st.image("images/quiz.jpeg", caption="Quiz")
         
     # Zitat des Tages, zentriert und gestaltet
@@ -112,18 +113,20 @@ def show_quiz():
 
 # Hauptfunktion zur Anzeige der Seiten basierend auf der aktuellen Seite im Session State
 def main():
-    page = st.experimental_get_query_params().get("page", ["Home"])[0]
-
-    if page == "Home":
+    if 'page' not in st.session_state:
+        st.session_state.page = 'Home'
+    
+    if st.session_state.page == 'Home':
         show_home()
-    elif page == "Pathways":
+    elif st.session_state.page == 'Pathways':
         show_pathways()
-    elif page == "Eselsbrücken":
+    elif st.session_state.page == 'Eselsbrücken':
         show_eselsbrücken()
-    elif page == "Memes":
+    elif st.session_state.page == 'Memes':
         show_memes()
-    elif page == "Quiz":
+    elif st.session_state.page == 'Quiz':
         show_quiz()
 
 if __name__ == "__main__":
     main()
+
