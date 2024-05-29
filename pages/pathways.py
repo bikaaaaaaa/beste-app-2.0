@@ -34,7 +34,7 @@ def main():
         st.markdown("<h1 style='text-align: center; font-family: Arial, sans-serif; font-size: 36px;'>Coming soon</h1>", unsafe_allow_html=True)
     if selected_pathway == "Atmungskette":
         st.image(pathways[selected_pathway]["main_image"], caption=selected_pathway, use_column_width=True, width=1000)
-        st.markdown("<p style='text-align: right; font-family: Arial, sans-serif; font-size: 14px; position: fixed; bottom: 10px; right: 10px;'>Inspired by <a href='https://meditricks.de' target='_blank'>meditricks.de</a></p>", unsafe_allow_html=True)
+        st.markdown("<p style='text-align: right; font-family: Arial, sans-serif; font-size: 14px; position: fixed; bottom: 10px; right: 40px;'>Inspired by <a href='https://meditricks.de' target='_blank'>meditricks.de</a></p>", unsafe_allow_html=True)
 
 
         current_stage_index = st.empty()
