@@ -117,29 +117,7 @@ def main():
         st.session_state.page = 'Home'
     
     if st.session_state.page == 'Home':
-        show_home():
-        st.title("Willkommen zu BioChem Pathways!")
-        col1, col2, col3, col4 = st.columns(4)
-    
-        with col1:
-            if st.button("Pathways"):
-                st.session_state.page = 'Pathways'
-            st.image("images/pathways.jpeg", caption="Pathways")
-    
-        with col2:
-            if st.button("Eselsbrücken"):
-                st.session_state.page = 'Eselsbrücken'
-            st.image("images/eselsbrücke.jpeg", caption="Eselsbrücken")
-    
-        with col3:
-            if st.button("Memes"):
-                st.session_state.page = 'Memes'
-            st.image("images/memes.jpeg", caption="Memes")
-    
-        with col4:
-            if st.button("Quiz"):
-                st.session_state.page = 'Quiz'
-            st.image("images/quiz.jpeg", caption="Quiz")
+        show_home()
     elif st.session_state.page == 'Pathways':
         show_pathways()
     elif st.session_state.page == 'Eselsbrücken':
