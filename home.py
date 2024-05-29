@@ -9,9 +9,11 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# Funktionen zur Anzeige der verschiedenen Seiten
-def show_home():
+# Hauptfunktion
+def main():
     st.title("Willkommen zu BioChem Pathways!")
+
+    # Anzeige der Buttons und Bilder auf der Startseite
     col1, col2, col3, col4 = st.columns(4)
 
     with col1:
@@ -34,6 +36,18 @@ def show_home():
         if st.button("Quiz"):
             show_quiz()
 
+    # Zitat des Tages
+    quote = get_daily_quote()
+    st.markdown(
+        f"""
+        <div style="background-color: #e0f7fa; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px;">
+            <h2 style="text-align: center; color: #00796b; font-family: 'Arial', sans-serif;">{quote}</h2>
+        </div>
+    """,
+        unsafe_allow_html=True,
+    )
+
+# Funktionen zur Anzeige der verschiedenen Seiten
 def show_pathways():
     st.title("Pathways")
     st.write("Hier sind die Inhalte zu Pathways.")
@@ -49,34 +63,6 @@ def show_memes():
 def show_quiz():
     st.title("Quiz")
     st.write("Hier sind die Inhalte zu Quiz.")
-
-# Liste der Seiten
-pages = {
-    "Home": show_home,
-    "Pathways": show_pathways,
-    "Eselsbrücken": show_eselsbrücken,
-    "Memes": show_memes,
-    "Quiz": show_quiz,
-}
-
-# Hauptfunktion
-def main():
-    # Anzeige der Seitenleiste für die Navigation
-    page = st.sidebar.radio("Navigation", list(pages.keys()))
-
-    # Anzeige der ausgewählten Seite
-    pages[page]()
-
-    # Zitat des Tages
-    quote = get_daily_quote()
-    st.markdown(
-        f"""
-        <div style="background-color: #e0f7fa; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px;">
-            <h2 style="text-align: center; color: #00796b; font-family: 'Arial', sans-serif;">{quote}</h2>
-        </div>
-    """,
-        unsafe_allow_html=True,
-    )
 
 # Liste der motivierenden Zitate
 quotes = [
@@ -98,14 +84,4 @@ quotes = [
     "Be kind to ya mind",
     "Don‘t let idiots ruin your day",
     "Don‘t be ashamed of who you are. That’s your parents' job",
-    "Don’t be a whiny little shit",
-    "Logic will get you from A to B. Imagination will take you everywhere – Albert Einstein",
-]
-
-# Abrufen eines zufälligen Zitats, das für einen Tag zwischengespeichert wird
-@st.cache(ttl=86400)
-def get_daily_quote():
-    return random.choice(quotes)
-
-if __name__ == "__main__":
-    main()
+    "Don’t be a whiny
