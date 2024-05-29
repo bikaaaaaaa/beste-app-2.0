@@ -5,14 +5,14 @@ App Name: BioChem Pathways
 
 
 **Beschreibung:**
-BioPathways Explorer ist eine einfache Streamlit-App, die es Benutzern ermöglicht, biochemische Pathways zu erkunden und grundlegende Informationen darüber zu erhalten. Die App bietet auch einfache und lustige Merksprüche über die verschiedenen komplexen Themen um besser zu lernen. 
+BioChem Pathways  ist eine einfache Streamlit-App, die es Benutzern ermöglicht, biochemische Pathways zu erkunden und grundlegende Informationen darüber zu erhalten. Die App bietet auch einfache und lustige Merksprüche über die verschiedenen komplexen Themen um besser zu lernen. 
 
  
 **Funktionen:**
  
-1. **Vordefinierte Pathways:** Die App enthält eine Auswahl von bekannten biochemischen Pathways, die in lebenden Organismen vorkommen, wie z.B. den Citratzyklus, die Glykolyse, usw. 
+1. **Vordefinierte Pathways:** Die App enthält eine Auswahl von bekannten biochemischen Pathways, die in lebenden Organismen vorkommen, wie z.B. die Atmungskette. 
  
-2. **Interaktive Visualisierung:** Benutzer können die ausgewählten Pathways interaktiv visualisieren. Die App generiert einfache Diagramme, die die beteiligten Moleküle und Reaktionen darstellen, um ein grundlegendes Verständnis zu vermitteln.
+2. **Einfache Visualisierung:** Durch die vereinfachten Zeichnungen sollten die Nutzern verstehen, wie so ein Biochemischer Prozess abläuft. 
  
 3. **Grundlegende Informationen:** Für jede Reaktion und jedes Molekül in einem Pathway werden grundlegende Informationen bereitgestellt, wie z.B. den Namen des Moleküls, die Reaktionstypen und die wichtigsten beteiligten Enzyme.
  
@@ -24,7 +24,7 @@ BioPathways Explorer ist eine einfache Streamlit-App, die es Benutzern ermöglic
 
 7. **Teste dein Wissen:** Die App bietet ein Quiz zu den Themen um dein Wissen zu testen zu den verschiedenen Biochemischen Prozessen. 
 
-8. **Motivation:** Tägliche Sprüche & Memes erhalten um motiviert zu bleiben beim lernen.
+8. **Motivation:** Täglich neue Sprüche um motiviert zu bleiben beim lernen. Sowie auch verschiedene Memes rund um unserem Studium (BMLD) & Biochemie selber. 
 
 
 **Zielgruppe:**
