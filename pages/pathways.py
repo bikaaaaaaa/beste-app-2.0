@@ -20,11 +20,7 @@ def main():
             }
         },
         "Citratzyklus": {
-            "main_image": "images/citratzyklus_main.jpg",
-            "stages": {
-                1: ("Detaillierte Beschreibung von Schritt 1 im Citratzyklus.", "images/citratzyklus_stage1.jpg"),
-                2: ("Detaillierte Beschreibung von Schritt 2 im Citratzyklus.", "images/citratzyklus_stage2.jpg"),
-            }
+            st.titel: ("Coming soon")
         }
     }
 
