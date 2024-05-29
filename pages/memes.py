@@ -41,7 +41,7 @@ def main():
     if st.button("Neues Meme bekommen"):
         meme = get_random_meme()
     else:
-    meme = get_random_meme()
+        meme = get_random_meme()
 
     st.image(meme, caption="Motivationsmeme", use_column_width=True)
 
