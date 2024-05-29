@@ -32,7 +32,7 @@ def main():
     if selected_pathway == "Citratzyklus":
         st.title("Citratzyklus")
         st.write("Coming soon")
-    elif selected_pathway == "Atmungskette":
+    if selected_pathway == "Atmungskette":
         st.image(pathways[selected_pathway]["main_image"], caption=selected_pathway, use_column_width=True, width=1000)
 
         current_stage_index = st.empty()
@@ -65,26 +65,27 @@ def main():
                 update_stage("next")
 
     # Add images at the bottom in a row without captions
-    additional_images = [
-        "images/at.z1.jpg",
-        "images/at.z2.jpg",
-        "images/at.z3.jpg",
-        "images/at.z4.jpg",
-        "images/at.z5.jpg",
-        "images/at.z6.jpg",
-    ]
+    if selected_pathway == "Atmungskette":
+        additional_images = [
+            "images/at.z1.jpg",
+            "images/at.z2.jpg",
+            "images/at.z3.jpg",
+            "images/at.z4.jpg",
+            "images/at.z5.jpg",
+            "images/at.z6.jpg",
+        ]
 
-    # Divide the images into two rows
-    row1, row2 = st.columns(2)
+        # Divide the images into two rows
+        row1, row2 = st.columns(2)
 
-    # Populate the first row
-    for img in additional_images[:3]:
-        row1.image(img, use_column_width=True)
+        # Populate the first row
+        for img in additional_images[:3]:
+            row1.image(img, use_column_width=True)
 
-    # Populate the second row
-    for img in additional_images[3:]:
-        row2.image(img, use_column_width=True)
-        
+        # Populate the second row
+        for img in additional_images[3:]:
+            row2.image(img, use_column_width=True)
+
 if __name__ == "__main__":
     main()
 
