@@ -1,4 +1,3 @@
-User
 import streamlit as st
 import random
 from datetime import datetime
