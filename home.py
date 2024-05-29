@@ -119,13 +119,17 @@ def main():
     if st.session_state.page == 'Home':
         show_home()
     elif st.session_state.page == 'Pathways':
-        show_pathways()
+        show_pathways():
+            st.title("Pathways")
+            st.write("Hier sind die Inhalte zu Pathways.")
     elif st.session_state.page == 'Eselsbrücken':
         show_eselsbrücken()
     elif st.session_state.page == 'Memes':
         show_memes()
     elif st.session_state.page == 'Quiz':
-        show_quiz()
+        show_quiz():
+            st.title("Quiz")
+            st.write("Hier sind die Inhalte zu Quiz.")
 
 if __name__ == "__main__":
     main()
