@@ -67,6 +67,16 @@ def show_home():
     st.title("Willkommen zu BioChem Pathways!")
     col1, col2, col3, col4 = st.columns(4)
 
+    # Debugging: Anzeige der aktuellen Seite
+    st.write("Aktuelle Seite: Home")
+
+    # Debugging: Überprüfung der Bildpfade
+    st.write("Überprüfung der Bildpfade:")
+    st.write("Pathways: images/pathways.jpeg")
+    st.write("Eselsbrücken: images/eselsbrücke.jpeg")
+    st.write("Memes: images/memes.jpeg")
+    st.write("Quiz: images/quiz.jpeg")
+
     with col1:
         if st.button("Pathways"):
             st.session_state.page = 'Pathways'
@@ -129,7 +139,7 @@ def main():
     else:
         st.error("Seite nicht gefunden")
 
-    # Aktualisierung der Seite erzwingen
+    # Überprüfen Sie, ob die Seite gewechselt werden soll, und erzwingen Sie ein Neuladen
     if st.button('Erzwingen Sie die Seite neu laden'):
         st.experimental_rerun()
 
