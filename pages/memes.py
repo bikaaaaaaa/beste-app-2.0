@@ -35,15 +35,16 @@ def get_random_meme():
     meme = random.choice(memes)
     return meme
 
-# Titel der App
-st.title("Motivationsmemes")
+def main():
+    st.title("Motivationsmemes")
 
-# Knopf, um den Inhalt zu aktualisieren
-if st.button("Neues Meme bekommen"):
-    meme = get_random_meme()
-else:
+    if st.button("Neues Meme bekommen"):
+        meme = get_random_meme()
+    else:
     meme = get_random_meme()
 
-# Meme-Bild anzeigen
-st.image(meme, caption="Motivationsmeme", use_column_width=True)
+    st.image(meme, caption="Motivationsmeme", use_column_width=True)
+
+if __name__ == "__main__":
+    main()
 
