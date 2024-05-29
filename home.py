@@ -1,5 +1,6 @@
 import streamlit as st
 import random
+from datetime import datetime
 
 # Seitenkonfiguration
 st.set_page_config(
@@ -114,27 +115,22 @@ def show_quiz():
 def main():
     if 'page' not in st.session_state:
         st.session_state.page = 'Home'
-
-    # Logging to debug the current page
-    st.write(f"DEBUG: Current page is {st.session_state.page}")
-
-    # Display the correct page based on the session state
+    
     if st.session_state.page == 'Home':
         show_home()
     elif st.session_state.page == 'Pathways':
-        st.write("DEBUG: Showing Pathways")
         show_pathways()
     elif st.session_state.page == 'Eselsbrücken':
-        st.write("DEBUG: Showing Eselsbrücken")
         show_eselsbrücken()
     elif st.session_state.page == 'Memes':
-        st.write("DEBUG: Showing Memes")
         show_memes()
     elif st.session_state.page == 'Quiz':
-        st.write("DEBUG: Showing Quiz")
         show_quiz()
+    else:
+        st.error("Seite nicht gefunden")
 
 if __name__ == "__main__":
     main()
+
 
 
