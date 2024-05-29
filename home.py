@@ -14,7 +14,16 @@ st.set_page_config(
 )
 
 def main():
+    
+    # Definition der Farben
+    class Theme:
+        primaryColor = "#05f1c9"
+        backgroundColor = "#c8e3e8"
+        secondaryBackgroundColor = "#82bad2"
+        textColor = "#0f1212"
 
+    theme = Theme()
+    
     # Anwendung des Themes
     st.markdown(
         f"""
