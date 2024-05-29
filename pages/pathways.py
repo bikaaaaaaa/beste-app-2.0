@@ -31,7 +31,7 @@ def main():
 
     if selected_pathway == "Citratzyklus":
         st.title("Citratzyklus")
-        st.write("Coming soon")
+        st.markdown("<h1 style='text-align: center; color: #336699;'>Coming soon</h1>", unsafe_allow_html=True)
     if selected_pathway == "Atmungskette":
         st.image(pathways[selected_pathway]["main_image"], caption=selected_pathway, use_column_width=True, width=1000)
 
