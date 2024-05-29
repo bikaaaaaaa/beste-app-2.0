@@ -84,7 +84,7 @@ def main():
     # Populate the second row
     for img in additional_images[3:]:
         row2.image(img, use_column_width=True)
-
+        
 if __name__ == "__main__":
     main()
 
