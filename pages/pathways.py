@@ -32,7 +32,7 @@ def main():
     if selected_pathway == "Citratzyklus":
         st.title("Citratzyklus")
         st.write("Coming soon")
-    else:
+    if selected_pathways == "Atmungskette"
         st.image(pathways[selected_pathway]["main_image"], caption=selected_pathway, use_column_width=True, width=1000)
 
         current_stage_index = st.empty()
