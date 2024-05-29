@@ -2,6 +2,8 @@ import streamlit as st
 import random
 from datetime import datetime
 
+theme_config = toml.load("config.toml")
+
 # Seitenkonfiguration
 st.set_page_config(
     page_title="BioPathways",
