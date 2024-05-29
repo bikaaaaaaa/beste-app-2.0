@@ -32,40 +32,37 @@ def main():
     if selected_pathway == "Citratzyklus":
         st.title("Citratzyklus")
         st.write("Coming soon")
-    if selected_pathways == "Atmungskette"
+    elif selected_pathway == "Atmungskette":
         st.image(pathways[selected_pathway]["main_image"], caption=selected_pathway, use_column_width=True, width=1000)
 
         current_stage_index = st.empty()
         stage_description = st.empty()
         stage_image = st.empty()
 
-    if "current_stage" not in st.session_state:
-        st.session_state.current_stage = 1
+        if "current_stage" not in st.session_state:
+            st.session_state.current_stage = 1
 
-    def update_stage(action):
-        if action == "next" and st.session_state.current_stage < len(pathways[selected_pathway]["stages"]):
-            st.session_state.current_stage += 1
-        elif action == "prev" and st.session_state.current_stage > 1:
-            st.session_state.current_stage -= 1
+        def update_stage(action):
+            if action == "next" and st.session_state.current_stage < len(pathways[selected_pathway]["stages"]):
+                st.session_state.current_stage += 1
+            elif action == "prev" and st.session_state.current_stage > 1:
+                st.session_state.current_stage -= 1
 
-        current_stage = pathways[selected_pathway]["stages"].get(st.session_state.current_stage)
-        if current_stage:
-            stage_image.image(current_stage[1], caption=f"Schritt {st.session_state.current_stage}", use_column_width=True)
-            stage_description.write(current_stage[0])
+            current_stage = pathways[selected_pathway]["stages"].get(st.session_state.current_stage)
+            if current_stage:
+                stage_image.image(current_stage[1], caption=f"Schritt {st.session_state.current_stage}", use_column_width=True)
+                stage_description.write(current_stage[0])
 
-    update_stage(None)
+        update_stage(None)
 
-    col1, col2 = st.columns(2)
-    with col1:
-        if st.button("Vorheriger Schritt", key="prev"):
-            update_stage("prev")
+        col1, col2 = st.columns(2)
+        with col1:
+            if st.button("Vorheriger Schritt", key="prev"):
+                update_stage("prev")
 
-    with col2:
-        if st.button("Nächster Schritt", key="next"):
-            update_stage("next")
-
-# At the bottom of your main() function, add the following code
-
+        with col2:
+            if st.button("Nächster Schritt", key="next"):
+                update_stage("next")
 
     # Add images at the bottom in a row without captions
     additional_images = [
@@ -87,9 +84,10 @@ def main():
     # Populate the second row
     for img in additional_images[3:]:
         row2.image(img, use_column_width=True)
-        
+
 if __name__ == "__main__":
     main()
+
 
 
 
