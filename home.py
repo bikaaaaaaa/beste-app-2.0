@@ -5,7 +5,7 @@ import random
 st.set_page_config(
     page_title="BioPathways",
     page_icon=":dna:",  # Symbol, falls benötigt
-    layout="centered",  # Ausrichtung des Inhalts
+    layout="wide",  # Ausrichtung des Inhalts
     initial_sidebar_state="expanded",  # Standardzustand der Seitenleiste
 )
 
@@ -68,22 +68,22 @@ def show_home():
 
     with col1:
         if st.button("Pathways"):
-            st.session_state.page = 'Pathways'
+            st.experimental_set_query_params(page="Pathways")
         st.image("images/pathways.jpeg", caption="Pathways")
 
     with col2:
         if st.button("Eselsbrücken"):
-            st.session_state.page = 'Eselsbrücken'
+            st.experimental_set_query_params(page="Eselsbrücken")
         st.image("images/eselsbrücke.jpeg", caption="Eselsbrücken")
 
     with col3:
         if st.button("Memes"):
-            st.session_state.page = 'Memes'
+            st.experimental_set_query_params(page="Memes")
         st.image("images/memes.jpeg", caption="Memes")
 
     with col4:
         if st.button("Quiz"):
-            st.session_state.page = 'Quiz'
+            st.experimental_set_query_params(page="Quiz")
         st.image("images/quiz.jpeg", caption="Quiz")
         
     # Zitat des Tages, zentriert und gestaltet
@@ -112,18 +112,17 @@ def show_quiz():
 
 # Hauptfunktion zur Anzeige der Seiten basierend auf der aktuellen Seite im Session State
 def main():
-    if 'page' not in st.session_state:
-        st.session_state.page = 'Home'
-    
-    if st.session_state.page == 'Home':
+    page = st.experimental_get_query_params().get("page", ["Home"])[0]
+
+    if page == "Home":
         show_home()
-    elif st.session_state.page == 'Pathways':
+    elif page == "Pathways":
         show_pathways()
-    elif st.session_state.page == 'Eselsbrücken':
+    elif page == "Eselsbrücken":
         show_eselsbrücken()
-    elif st.session_state.page == 'Memes':
+    elif page == "Memes":
         show_memes()
-    elif st.session_state.page == 'Quiz':
+    elif page == "Quiz":
         show_quiz()
 
 if __name__ == "__main__":
