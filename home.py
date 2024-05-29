@@ -67,7 +67,7 @@ def main():
         initial_sidebar_state="expanded"
     )
 
-    page = st.sidebar.selectbox(
+    page = st.sidebar.radio(
         "Navigation",
         ["Home", "Pathways", "Eselsbrücken", "Memes", "Quiz"]
     )
@@ -83,7 +83,14 @@ def main():
     elif page == "Quiz":
         show_quiz()
 
+    # Zitat des Tages
+    quote = get_daily_quote()
+    st.markdown(f"""
+        <div style="background-color: #e0f7fa; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px;">
+            <h2 style="text-align: center; color: #00796b; font-family: 'Arial', sans-serif;">{quote}</h2>
+        </div>
+    """, unsafe_allow_html=True)
+
 if __name__ == "__main__":
     main()
-
 
