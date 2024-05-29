@@ -2,7 +2,7 @@ import streamlit as st
 import random
 
 memes = [
-    "memes.images/1.jpeg",
+    "memes.1.jpeg",
     "memes.images/2.jpeg",
     "memes.images/3.jpeg",
     "memes.images/4.jpeg",
