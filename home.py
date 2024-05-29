@@ -1,53 +1,92 @@
 import streamlit as st
 import random
+from datetime import datetime
 
 # Seitenkonfiguration
 st.set_page_config(
-    page_title="BioChem Pathways",
-    page_icon=":dna:",
-    layout="wide",  # Änderung des Layouts für mehr Platz
-    initial_sidebar_state="expanded",
+    page_title="BioPathways",
+    page_icon=":dna:",  # Symbol, falls benötigt
+    layout="centered",  # Ausrichtung des Inhalts
+    initial_sidebar_state="expanded",  # Standardzustand der Seitenleiste
 )
 
-# Hauptfunktion
 def main():
-    st.title("Willkommen zu BioChem Pathways!")
 
-    # Anzeige der Buttons und Bilder auf der Startseite
-    col1, col2, col3, col4 = st.columns(4)
+    # Definition der Farben
+    class Theme:
+        primaryColor = "#05f1c9"
+        backgroundColor = "#c8e3e8"
+        secondaryBackgroundColor = "#82bad2"
+        textColor = "#0f1212"
 
-    with col1:
-        st.image("images/pathways.jpeg", caption="Pathways")
-        if st.button("Pathways"):
-            show_pathways()
+    theme = Theme()
 
-    with col2:
-        st.image("images/eselsbrücke.jpeg", caption="Eselsbrücken")
-        if st.button("Eselsbrücken"):
-            show_eselsbrücken()
-
-    with col3:
-        st.image("images/memes.jpeg", caption="Memes")
-        if st.button("Memes"):
-            show_memes()
-
-    with col4:
-        st.image("images/quiz.jpeg", caption="Quiz")
-        if st.button("Quiz"):
-            show_quiz()
-
-    # Zitat des Tages
-    quote = get_daily_quote()
+    # Anwendung des Themes
     st.markdown(
         f"""
-        <div style="background-color: #e0f7fa; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px;">
-            <h2 style="text-align: center; color: #00796b; font-family: 'Arial', sans-serif;">{quote}</h2>
-        </div>
-    """,
+        <style>
+        .reportview-container.main.block-container {{
+            color: {theme.primaryColor};
+            background-color: {theme.backgroundColor};
+            font-family: Arial, sans-serif;
+        }}
+        .reportview-container.main {{
+            color: {theme.primaryColor};
+            background-color: {theme.backgroundColor};
+        }}
+        </style>
+        """,
         unsafe_allow_html=True,
     )
 
+    if 'page' not in st.session_state:
+        st.session_state.page = 'Home'
+
+    # Anzeige der entsprechenden Seite
+    if st.session_state.page == 'Home':
+        show_home()
+    elif st.session_state.page == 'Pathways':
+        show_pathways()
+    elif st.session_state.page == 'Eselsbrücken':
+        show_eselsbrücken()
+    elif st.session_state.page == 'Memes':
+        show_memes()
+    elif st.session_state.page == 'Quiz':
+        show_quiz()
+
+    # Zitat des Tages, zentriert und gestaltet
+    quote = get_daily_quote()
+    st.markdown(f"""
+        <div style="background-color: #e0f7fa; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px;">
+            <h2 style="text-align: center; color: #00796b; font-family: 'Arial', sans-serif;">{quote}</h2>
+        </div>
+    """, unsafe_allow_html=True)
+
 # Funktionen zur Anzeige der verschiedenen Seiten
+def show_home():
+    st.title("Willkommen zu BioChem Pathways!")
+    col1, col2, col3, col4 = st.columns(4)
+
+    with col1:
+        if st.button("Pathways", key='pathways_button'):
+            st.switch_page('pages/pathways.py')
+        st.image("images/pathways.jpeg", caption="Pathways")
+
+    with col2:
+        if st.button("Eselsbrücken", key='eselsbrücken_button'):
+            st.switch_page('pages/eselsbrücken.py')
+        st.image("images/eselsbrücke.jpeg", caption="Eselsbrücken")
+
+    with col3:
+        if st.button("Memes", key='memes_button'):
+            st.switch_page('pages/memes.py')
+        st.image("images/memes.jpeg", caption="Memes")
+
+    with col4:
+        if st.button("Quiz", key='quiz_button'):
+            st.switch_page('pages/quiz.py')
+        st.image("images/quiz.jpeg", caption="Quiz")
+
 def show_pathways():
     st.title("Pathways")
     st.write("Hier sind die Inhalte zu Pathways.")
@@ -85,13 +124,24 @@ quotes = [
     "Don‘t let idiots ruin your day",
     "Don‘t be ashamed of who you are. That’s your parents' job",
     "Don’t be a whiny little shit",
-    "Logic will get you from A to B. Imagination will take you everywhere – Albert Einstein",
+    "Logic will get you from A to B. Imagination will take you everywhere – Albert Einstein"
 ]
 
 # Abrufen eines zufälligen Zitats, das für einen Tag zwischengespeichert wird
-@st.cache(ttl=86400)
+@st.cache_data(ttl=86400)
 def get_daily_quote():
     return random.choice(quotes)
 
 if __name__ == "__main__":
     main()
+schreib diesen Teil ausserhalb der mein function: # Anzeige der entsprechenden Seite
+    if st.session_state.page == 'Home':
+        show_home()
+    elif st.session_state.page == 'Pathways':
+        show_pathways()
+    elif st.session_state.page == 'Eselsbrücken':
+        show_eselsbrücken()
+    elif st.session_state.page == 'Memes':
+        show_memes()
+    elif st.session_state.page == 'Quiz':
+        show_quiz()
