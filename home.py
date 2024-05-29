@@ -61,7 +61,7 @@ quotes = [
 def get_daily_quote():
     return random.choice(quotes)
 
-# Funktionen zur Anzeige der verschiedenen Seiten
+# Funktion zur Anzeige der Startseite
 def show_home():
     st.title("Willkommen zu BioChem Pathways!")
     col1, col2, col3, col4 = st.columns(4)
