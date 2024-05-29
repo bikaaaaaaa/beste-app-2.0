@@ -5,9 +5,9 @@ from datetime import datetime
 # Seitenkonfiguration
 st.set_page_config(
     page_title="BioPathways",
-    page_icon=":dna:",
-    layout="centered",
-    initial_sidebar_state="expanded",
+    page_icon=":dna:",  # Symbol, falls benötigt
+    layout="centered",  # Ausrichtung des Inhalts
+    initial_sidebar_state="expanded",  # Standardzustand der Seitenleiste
 )
 
 # Definition der Farben
@@ -17,23 +17,21 @@ class Theme:
     secondaryBackgroundColor = "#82bad2"
     textColor = "#0f1212"
 
-# Anwendung des Themes
-def apply_theme():
-    theme = Theme()
-    st.markdown(
-        f"""
-        <style>
-        .reportview-container {{
-            color: {theme.textColor};
-            background-color: {theme.backgroundColor};
-            font-family: Arial, sans-serif;
-        }}
-        </style>
-        """,
-        unsafe_allow_html=True,
-    )
+theme = Theme()
 
-apply_theme()
+# Anwendung des Themes
+st.markdown(
+    f"""
+    <style>
+    .reportview-container {{
+        color: {theme.textColor};
+        background-color: {theme.backgroundColor};
+        font-family: Arial, sans-serif;
+    }}
+    </style>
+    """,
+    unsafe_allow_html=True,
+)
 
 # Liste der motivierenden Zitate
 quotes = [
@@ -131,5 +129,6 @@ def main():
 
 if __name__ == "__main__":
     main()
+
 
 
