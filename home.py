@@ -1,6 +1,14 @@
 import streamlit as st
 import random
 
+# Seitenkonfiguration
+st.set_page_config(
+    page_title="BioPathways",
+    page_icon=":dna:",  # Symbol, falls benötigt
+    layout="centered",  # Ausrichtung des Inhalts
+    initial_sidebar_state="expanded",  # Standardzustand der Seitenleiste
+)
+
 # Definition der Farben
 class Theme:
     primaryColor = "#05f1c9"
@@ -29,7 +37,23 @@ quotes = [
     "Your chemistry teacher WILL find you and lecture you, if you still dont know how H2O is loaded.",
     "Drink water, your organs are failing!",
     "I 🐝 🍃 in you!!",
-    # Weitere Zitate hier ...
+    "JUST DO IT!",
+    "🦄",
+    "Never back down never what? – never give up – NEVER BACK DOWN NEVER WHAT? – Never give up!!",
+    "„Do or do not. There is no try.“ – Yoda",
+    "Never gonna give you up 🕺 Never gonna let you down 💃 Never gonna run around and desert you 🕺Never gonna make you cry 💃 Never gonna say goodbye 🕺Never gonna tell a lie and hurt you 💃",
+    "„It is not our abilities that show what we truly are … it is our choices.“ – Dumbledore",
+    "“Just keep swimming. Just keep swimming. Just keep swimming, swimming, swimming. What do we do? We swim, swim.” – Dory",
+    "You dropped this 👑",
+    "In this world you either crank that soulja boy or it cranks you",
+    "Sorry i’m too thicc to do anything half-assed",
+    "Do literally whatever makes you happy",
+    "You know what it takes to make a star shine? A shitload of fucking darkness",
+    "Be kind to ya mind",
+    "Don‘t let idiots ruin your day",
+    "Don‘t be ashamed of who you are. That’s your parents' job",
+    "Don’t be a whiny little shit",
+    "Logic will get you from A to B. Imagination will take you everywhere – Albert Einstein"
 ]
 
 # Abrufen eines zufälligen Zitats, das für einen Tag zwischengespeichert wird
@@ -37,12 +61,39 @@ quotes = [
 def get_daily_quote():
     return random.choice(quotes)
 
-# Funktion zur Anzeige der Startseite
+# Funktionen zur Anzeige der verschiedenen Seiten
 def show_home():
     st.title("Willkommen zu BioChem Pathways!")
-    # Hier Inhalte für die Startseite einfügen
+    col1, col2, col3, col4 = st.columns(4)
 
-# Funktionen zur Anzeige der verschiedenen Seiten
+    with col1:
+        if st.button("Pathways"):
+            st.session_state.page = 'Pathways'
+        st.image("images/pathways.jpeg", caption="Pathways")
+
+    with col2:
+        if st.button("Eselsbrücken"):
+            st.session_state.page = 'Eselsbrücken'
+        st.image("images/eselsbrücke.jpeg", caption="Eselsbrücken")
+
+    with col3:
+        if st.button("Memes"):
+            st.session_state.page = 'Memes'
+        st.image("images/memes.jpeg", caption="Memes")
+
+    with col4:
+        if st.button("Quiz"):
+            st.session_state.page = 'Quiz'
+        st.image("images/quiz.jpeg", caption="Quiz")
+        
+    # Zitat des Tages, zentriert und gestaltet
+    quote = get_daily_quote()
+    st.markdown(f"""
+        <div style="background-color: #e0f7fa; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px;">
+            <h2 style="text-align: center; color: #00796b; font-family: 'Arial', sans-serif;">{quote}</h2>
+        </div>
+    """, unsafe_allow_html=True)
+
 def show_pathways():
     st.title("Pathways")
     st.write("Hier sind die Inhalte zu Pathways.")
@@ -61,37 +112,29 @@ def show_quiz():
 
 # Hauptfunktion zur Anzeige der Seiten basierend auf der aktuellen Seite im Session State
 def main():
-    st.set_page_config(
-        page_title="BioPathways",
-        page_icon=":dna:",
-        layout="centered",
-        initial_sidebar_state="expanded"
-    )
+    if 'page' not in st.session_state:
+        st.session_state.page = 'Home'
 
-    page = st.sidebar.radio(
-        "Navigation",
-        ["Home", "Pathways", "Eselsbrücken", "Memes", "Quiz"]
-    )
+    # Logging to debug the current page
+    st.write(f"DEBUG: Current page is {st.session_state.page}")
 
-    if page == "Home":
+    # Display the correct page based on the session state
+    if st.session_state.page == 'Home':
         show_home()
-    elif page == "Pathways":
+    elif st.session_state.page == 'Pathways':
+        st.write("DEBUG: Showing Pathways")
         show_pathways()
-    elif page == "Eselsbrücken":
+    elif st.session_state.page == 'Eselsbrücken':
+        st.write("DEBUG: Showing Eselsbrücken")
         show_eselsbrücken()
-    elif page == "Memes":
+    elif st.session_state.page == 'Memes':
+        st.write("DEBUG: Showing Memes")
         show_memes()
-    elif page == "Quiz":
+    elif st.session_state.page == 'Quiz':
+        st.write("DEBUG: Showing Quiz")
         show_quiz()
-
-    # Zitat des Tages
-    quote = get_daily_quote()
-    st.markdown(f"""
-        <div style="background-color: #e0f7fa; padding: 20px; border-radius: 15px; box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); margin: 20px;">
-            <h2 style="text-align: center; color: #00796b; font-family: 'Arial', sans-serif;">{quote}</h2>
-        </div>
-    """, unsafe_allow_html=True)
 
 if __name__ == "__main__":
     main()
+
 
